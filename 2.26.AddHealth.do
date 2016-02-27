@@ -12,15 +12,9 @@ log using `time_string'_addhealth.log, replace
 
 * Racial Characteristics *
 
-/* The Add Health Survey includes two racial self-identification questions/
-varaibles. One allows the respondent to select multiple races (H1GI6A-H1GI6E)by
-asking "What is your race? You may give more than one answer." However, the
-other variable only allows the respondent to select one race (H1GI8) by asking
-"Which one category best describes your racial beackground?"
+/* The Add Health Survey includes two racial self-identification questions/varaibles. One allows the respondent to select multiple races (H1GI6A-H1GI6E) by asking "What is your race? You may give more than one answer." However, the other variable only allows the respondent to select one race (H1GI8) by asking "Which one category best describes your racial beackground?"
 
-Using the first question, one can determine if the respondent is single-raced or
-multiracial. Using the second question, one can determine how the respondent 
-best identifies his or her race. */
+Using the first question, one can determine if the respondent is single-raced or multiracial. Using the second question, one can determine how the respondent best identifies his or her race. */
 
 gen anyAIAN=.
 replace anyAIAN=1 if H1GI6C==1
@@ -48,17 +42,12 @@ tab racialcomp_AIAN bestAIAN
 table H1GI9 racialcomp_AIAN bestAIAN
 
 
-/* This table reveals that no respondents who have AIAN heritage, but do not
-best identify as AIAN are misclassified by interviewers as AIAN. Therefore, I
-will focus my analysis of behaviors associated with misclassification only on 
-the subset of respondents with AIAN heritage who best identify as AIAN.*/
+/* This table reveals that no respondents who have AIAN heritage, but do not best identify as AIAN are misclassified by interviewers as AIAN. Therefore, I will focus my analysis of behaviors associated with misclassification only on the subset of respondents with AIAN heritage who best identify as AIAN.*/
 
 
 * Mismatch AIAN Identification Flags *
 
-/* I will create a variable (mismatch) to indicate respondents from whom the 
-interviwer's perception of their race (H1GI9) disagreed with the respondent's 
-best description of his or her race as AIAN (bestAIAN).
+/* I will create a variable (mismatch) to indicate respondents from whom the interviwer's perception of their race (H1GI9) disagreed with the respondent's best description of his or her race as AIAN (bestAIAN).
 
 mismatch = 1 if there is disagreement between respondent & interviewer
 mismatch = 0 if there is agreement between respondent & interviewer */
@@ -95,9 +84,7 @@ table PA6_3 racialcomp_AIAN mismatch
 tab PA6_3,  sum(mismatch) mean freq
 tab PA6_3 racialcomp_AIAN, sum(mismatch) mean
 
-/*INTERESTING: Some the students who identify as single-race AIAN, have "parent"
-respondents who do NOT report any AIAN heritage. Need to look further into who 
-is filling out the parent questionnaire */
+/*INTERESTING: Some the students who identify as single-race AIAN, have "parent" respondents who do NOT report any AIAN heritage. Need to look further into who is filling out the parent questionnaire */
 
 //LOCATION
 label define location 1 "rural" 2 "suburban" 3 "urban, residential only" 4 "3+ commercial property, retail" 5 "3+ commercial property, industrial" 6 "other"
